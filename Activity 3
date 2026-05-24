@@ -1,0 +1,139 @@
+<?php
+// Initialize variables & error arrays
+$name = $email = $gender = $course = $message = $password = $age = "";
+$hobbies = [];
+$errors = [];
+$success = "";
+
+// PROCESS FORM WHEN SUBMITTED
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // --------------------------
+    // LAB 4: FORM VALIDATION
+    // --------------------------
+    // Check required fields
+    if (empty(trim($_POST["name"]))) {
+        $errors['name'] = "Name is required!";
+    } else {
+        // LAB 5: PREVENT XSS - Sanitize Input
+        $name = htmlspecialchars(trim($_POST["name"]));
+    }
+
+    if (empty(trim($_POST["email"]))) {
+        $errors['email'] = "Email is required!";
+    } else {
+        // LAB 6: EMAIL VALIDATION
+        $email = trim($_POST["email"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = "Invalid email format!";
+        } else {
+            $email = htmlspecialchars($email);
+        }
+    }
+
+    if (empty($_POST["gender"])) {
+        $errors['gender'] = "Please select gender!";
+    } else {
+        $gender = htmlspecialchars($_POST["gender"]);
+    }
+
+    if (empty($_POST["course"])) {
+        $errors['course'] = "Please select course!";
+    } else {
+        $course = htmlspecialchars($_POST["course"]);
+    }
+
+    if (empty(trim($_POST["message"]))) {
+        $errors['message'] = "Message cannot be empty!";
+    } else {
+        $message = htmlspecialchars(trim($_POST["message"]));
+    }
+
+    // LAB 13: PASSWORD INPUT
+    if (empty(trim($_POST["password"]))) {
+        $errors['password'] = "Password is required!";
+    } else {
+        $password = trim($_POST["password"]); // NEVER display password
+    }
+
+    // LAB 16: NUMBER / AGE VALIDATION
+    if (empty(trim($_POST["age"]))) {
+        $errors['age'] = "Age is required!";
+    } else {
+        $age = trim($_POST["age"]);
+        if (!is_numeric($age) || $age < 1 || $age > 120) {
+            $errors['age'] = "Age must be a valid number between 1-120!";
+        } else {
+            $age = htmlspecialchars($age);
+        }
+    }
+
+    // LAB 14: CHECKBOX MULTIPLE SELECTIONS
+    if (!empty($_POST["hobbies"])) {
+        foreach ($_POST["hobbies"] as $hobby) {
+            $hobbies[] = htmlspecialchars($hobby);
+        }
+    } else {
+        $errors['hobbies'] = "Select at least one hobby!";
+    }
+
+    // If NO ERRORS → Show Success
+    if (empty($errors)) {
+        $success = "<div style='color:green; padding:10px; background:#e8f5e9; border-radius:5px; margin:15px 0;'>
+                        ✅ Form Submitted Successfully!
+                    </div>";
+    }
+}
+
+// --------------------------
+// LAB 18: GET vs POST COMPARISON
+// --------------------------
+if (isset($_GET["test_name"])) {
+    echo "<div style='background:#f3f4f6; padding:10px; margin:10px 0; border:1px solid #ccc;'>
+            <strong>GET Method Output:</strong> Hello, " . htmlspecialchars($_GET["test_name"]) . "<br>
+            <small>(Check URL: data is visible in address bar)</small>
+          </div>";
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHP Form Labs 1–20 Complete</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 700px; margin: 20px auto; padding:0 20px; line-height:1.6; }
+        .lab-title { background:#2c3e50; color:white; padding:10px; border-radius:5px; margin:20px 0 5px; }
+        label { font-weight:bold; display:inline-block; margin:8px 0 3px; }
+        input, select, textarea { width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; }
+        input[type="radio"], input[type="checkbox"] { width:auto; margin-right:5px; }
+        button, input[type="submit"], input[type="reset"] { width:auto; padding:8px 20px; margin:15px 10px 0 0; cursor:pointer; border:none; border-radius:4px; font-weight:bold; }
+        .btn-submit { background:#27ae60; color:white; }
+        .btn-reset { background:#e74c3c; color:white; }
+        .error { color:#e74c3c; font-size:0.9em; margin:2px 0 8px; }
+        .output { background:#f8f9fa; padding:15px; border-radius:5px; margin:15px 0; border:1px solid #ddd; }
+    </style>
+</head>
+<body>
+
+    <h1>PHP Form Labs — Complete All Exercises</h1>
+    <hr>
+
+    <!-- ==================================================
+         LAB 1: BASIC FORM (GET METHOD)
+    ================================================== -->
+    <div class="lab-title"><strong>LAB 1: Basic Form Creation (GET Method)</strong></div>
+    <form method="get" action="">
+        <label>Name:</label>
+        <input type="text" name="test_name" required>
+        <input type="submit" class="btn-submit" value="Submit with GET">
+    </form>
+
+
+    <!-- ==================================================
+         LAB 2 → LAB 20: COMPLETE FORM (POST METHOD)
+         Includes: POST, Multiple Inputs, Validation, 
+         XSS Protection, Email, Radio, Select, Textarea,
+         Self-Processing, Sticky Form, Password, Checkbox,
+         Reset Button, Age Validation, HTML5 Required
+    ===========
