@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHP If & Switch Statements - All Labs</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 700px; margin: 20px auto; padding: 0 20px; line-height:1.6; }
+        .lab-title { background:#2c3e50; color:white; padding:10px; border-radius:5px; margin:20px 0 5px; }
+        .result { background:#f8f9fa; padding:12px; border-radius:5px; border:1px solid #ddd; margin:8px 0 15px; }
+        form { background:#ecf0f1; padding:15px; border-radius:5px; margin:10px 0; }
+        input, select, button { padding:6px; margin:4px 0; border-radius:4px; border:1px solid #ccc; }
+        button { background:#27ae60; color:white; border:none; padding:7px 15px; cursor:pointer; font-weight:bold; }
+    </style>
+</head>
+<body>
+
+<h1>PART A: PHP If Statements</h1>
+<hr>
+
+<?php
+// ==================================================
+// LAB 1: Basic If Statement
+// ==================================================
+echo "<div class='lab-title'><strong>LAB 1: Basic If Statement</strong></div>";
+$age = 18;
+echo "<div class='result'>";
+if ($age >= 18) {
+    echo "You are eligible to vote";
+}
+echo "</div>";
+
+
+// ==================================================
+// LAB 2: If-Else Statement (Positive / Negative)
+// ==================================================
+echo "<div class='lab-title'><strong>LAB 2: If-Else Statement</strong></div>";
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["num1"])) {
+    $number = $_POST["num1"];
+    echo "<div class='result'>";
+    if ($number > 0) {
+        echo "Positive number";
+    } else {
+        echo "Negative number";
+    }
+    echo "</div>";
+}
+?>
+<form method="post" action="">
+    <label>Enter a number:</label>
+    <input type="number" name="num1" required>
+    <button type="submit">Check</button>
+</form>
+
+
+<?php
+// ==================================================
+// LAB 3: If-ElseIf Statement (Grade Checker)
+// ==================================================
+echo "<div class='lab-title'><strong>LAB 3: If-ElseIf Statement</strong></div>";
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["grade"])) {
+    $grade = $_POST["grade"];
+    echo "<div class='result'>";
+    if ($grade >= 90 && $grade <= 100) {
+        echo "Excellent";
+    } elseif ($grade >= 80 && $grade <= 89) {
+        echo "Good";
+    } elseif ($grade >= 70 && $grade <= 79) {
+        echo "Average";
+    } elseif ($grade < 70 && $grade >= 0) {
+        echo "Failed";
+    } else {
+        echo "Invalid Grade!";
+    }
+    echo "</div>";
+}
+?>
+<form method="post" action="">
+    <label>Enter Student Grade (0-100):</label>
+    <input type="number" name="grade" min="0" max="100" required>
+    <button type="submit">Check Grade</button>
+</form>
+
+
+<?php
+// ==================================================
+// LAB 4: Even or Odd Checker
+// ==================================================
+echo "<div class='lab-title'><strong>LAB 4: Even or Odd Checker</strong></div>";
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["num2"])) {
+    $num = $_POST["num2"];
+    echo "<div class='result'>";
+    if ($num % 2 == 0) {
+        echo "$num is Even";
+    } else {
+        echo "$num is Odd";
+    }
+    echo "</div>";
+}
+?>
+<form method="post" action="">
+    <label>Enter Number:</label>
+    <input type="number" name="num2" required>
+    <button type="submit">Check</button>
+</form>
+
+
+<?php
+// ==================================================
+// LAB 5: Largest of Three Numbers
+// ==================================================
+echo "<div class='lab-title'><strong>LAB 5: Largest of Three Numbers</strong></div>";
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["n1"]) && isset($_POST["n2"]) && isset($_POST["n3"])) {
+    $n1 = $_POST["n1"];
+    $n2 = $_POST["n2"];
+    $n3 = $_POST["n3"];
+    echo "<div class='result'>";
+    if ($n1 >= $n2 && $n1 >= $n3) {
+        echo "Largest Number: $n1";
+    } elseif ($n2 >= $n1 && $n2 >= $n3) {
+        echo "Largest Number: $n2";
+    } else {
+        echo "Largest Number: $n3";
+    }
+    echo "</div>";
+}
+?>
+<form method="post" action="">
+    <label>Number 1:</label> <input type="number" name="n1" required><br>
+    <label>Number 2:</label> <input type="number" name="n2" required><br>
+    <label>Number 3:</label> <input type="number" name="n3" required><br>
+    <button type="submit">Find Largest</button>
+</form>
+
+
+<?php
+// ==================================================
+// LAB 6: Password Checker
+// ==================================================
+echo "<div class='lab-title'><strong>LAB 6: Password Checker</strong></div>";
+$correct_pass = "admin123";
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["pass"])) {
+    $user_pass = $_POST["pass"];
+    echo "<div class='result'>";
+    if ($user_pass == $correct_pass) {
+        echo "Access Granted ✅";
+    } else {
+        echo "Access Denied ❌";
+    }
+    echo "</div>";
+}
+?>
+<form method="post" action="">
+    <label>Enter Password:</lab
