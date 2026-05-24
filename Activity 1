@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Webpage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ecf0f1;
+        }
+
+        /* Navigation Menu */
+        .menu {
+            background-color: #34495e;
+            overflow: hidden;
+        }
+
+        .menu a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            background-color: #1abc9c;
+            color: white;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+
+        /* Clickable Image */
+        .image-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .clickable-img {
+            width: 300px;
+            border-radius: 8px;
+            border: 4px solid #1abc9c;
+            transition: transform 0.3s;
+        }
+
+        .clickable-img:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        /* Styled Table */
+        .table-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #1abc9c;
+            color: white;
+            padding: 1rem;
+        }
+
+        td {
+            padding: 1rem;
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Form with Validation */
+        .form-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0.1);
+        }
+
+        form {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Validation Style */
+        input:invalid {
+            border: 2px solid #e74c3c;
+        }
+
+        input:valid {
+            border: 2px solid #2ecc71;
+        }
+
+        button {
+            background-color: #34495e;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1abc9c;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ Navigation Menu -->
+    <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="container">
+        <h1>My Combined Webpage</h1>
+
+        <!-- ✅ Clickable Image -->
+        <div class="image-section" id="home">
+            <a href="https://www.w3schools.com" target="_blank">
+                <img src="https://picsum.photos/id/0/300/200" alt="Clickable Image" class="clickable-img">
+            </a>
+            <p><em>(Click image to visit W3Schools)</em></p>
+        </div>
+
+        <!-- ✅ Styled Table -->
+        <div class="table-section" id="projects">
+            <h2 style="color:#2c3e50; margin-bottom:1rem;">Project List</h2>
+            <table>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Language</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Personal Profile</td>
+                    <td>HTML & CSS</td>
+                    <td>Completed</td>
+                </tr>
+                <tr>
+                    <td>Login System</td>
+                    <td>PHP</td>
+                    <td>In Progress</td>
+                </tr>
+                <tr>
+                    <td>To-Do List</td>
+                    <td>JavaScript</td>
+                    <td>Pending</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ✅ Form with Validation -->
+        <div class="form-section" id="contact">
+            <h2 style="color:#2c3e50; margin-bottom:1rem;">Registration Form</h2>
+            <form>
+                <div class="form-group">
+                    <label>Full Name:</label>
+                    <input type="text" name="fullname" required minlength="3" placeholder="Enter full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address:</label>
+                    <input type="email" name="email" required placeholder="example@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number:</label>
+                    <input type="tel" name="phone" required pattern="[0-9]{11}" placeholder="09123456789 (11 digits)">
+                </div>
+
+                <div class="form-group">
+                    <label>Message:</label>
+                    <textarea name="message" rows="4" required placeholder="Write your message here..."></textarea>
+                </div>
+
+                <button type="submit">Submit Form</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
