@@ -1,0 +1,153 @@
+<?php
+// ==============================================
+// ACTIVITY 1: Basic Output
+// Task: Display your name and course
+// ==============================================
+echo "<h2>ACTIVITY 1: Basic Output</h2>";
+echo "Name: Juan Dela Cruz <br>";
+print "Course: BSIT";
+echo "<br><br>";
+
+// --- GUIDE QUESTIONS & ANSWERS ---
+// 1. What symbol is used to end a PHP statement? 
+// ✅ Answer: Semicolon ;
+// 2. Which is faster: echo or print? 
+// ✅ Answer: echo (it has no return value, slightly faster)
+
+// ==============================================
+// ACTIVITY 2: Multiple Outputs
+// Task: Display 3 different messages
+// ==============================================
+echo "<h2>ACTIVITY 2: Multiple Outputs</h2>";
+echo "Welcome!<br>";
+echo "This is PHP.<br>";
+echo "Enjoy coding!";
+echo "<br><br>";
+
+// ==============================================
+// ACTIVITY 3: Declaring Variables
+// Task: Create variables and display them
+// ==============================================
+echo "<h2>ACTIVITY 3: Declaring Variables</h2>";
+$name = "Maria";
+$age = 20;
+
+echo "Name: " . $name . "<br>";
+echo "Age: " . $age;
+echo "<br><br>";
+
+/*
+✅ Output:
+Name: Maria
+Age: 20
+*/
+
+// ==============================================
+// ACTIVITY 4: Variable Rules
+// Task: Fix the errors in code
+// Original code (ERRORS):
+// $1name = "Ana";  ❌ Cannot start with number
+// $Age = 18;       ❌ Case-sensitive → $Age is NOT same as $age
+// echo $age;       
+// ==============================================
+echo "<h2>ACTIVITY 4: Variable Rules</h2>";
+// ✅ FIXED CODE:
+$name_student = "Ana"; // start with letter/underscore only
+$age = 18;             // match variable name
+
+echo "Name: " . $name_student . "<br>";
+echo "Age: " . $age;
+echo "<br><br>";
+
+/*
+✅ Rules Applied:
+- Variables start with $
+- Cannot start with numbers
+- Only letters, numbers, underscores allowed
+- Names are CASE-SENSITIVE ($age ≠ $Age)
+
+✅ Output:
+Name: Ana
+Age: 18
+*/
+
+// ==============================================
+// ACTIVITY 5: Arithmetic Operators
+// Task: Perform operations
+// Operators: + - * / 
+// ==============================================
+echo "<h2>ACTIVITY 5: Arithmetic Operators</h2>";
+$a = 10;
+$b = 3;
+
+echo "Addition: " . ($a + $b) . "<br>";
+echo "Subtraction: " . ($a - $b) . "<br>";
+echo "Multiplication: " . ($a * $b) . "<br>";
+echo "Division: " . ($a / $b);
+echo "<br><br>";
+
+/*
+✅ Output:
+Addition: 13
+Subtraction: 7
+Multiplication: 30
+Division: 3.3333333333333
+*/
+
+// ==============================================
+// ACTIVITY 6: Assignment Operators
+// Task: Predict the output
+// Operators: = += -= *= /=
+// ==============================================
+echo "<h2>ACTIVITY 6: Assignment Operators</h2>";
+$x = 5;
+$x += 3; // Equivalent: $x = $x + 3 → 5 + 3 = 8
+
+echo "Output: " . $x; 
+echo "<br><br>";
+
+/*
+✅ Answer / Output: 8
+*/
+
+// ==============================================
+// ACTIVITY 7: Comparison Operators
+// Task: Check conditions (TRUE / FALSE)
+// Operators: > < >= <= == === !=
+// ==============================================
+echo "<h2>ACTIVITY 7: Comparison Operators</h2>";
+$a = 10;
+$b = 5;
+
+var_dump($a > $b);   // Is 10 greater than 5? → TRUE
+echo "<br>";
+var_dump($a == $b);  // Is 10 equal to 5? → FALSE
+echo "<br><br>";
+
+/*
+✅ Output:
+bool(true)
+bool(false)
+*/
+
+// ==============================================
+// MINI PROJECT: Simple Calculator
+// Task: Perform all 4 basic operations
+// ==============================================
+echo "<h2>MINI PROJECT: Simple Calculator</h2>";
+$num1 = 8;
+$num2 = 4;
+
+echo "Sum: " . ($num1 + $num2) . "<br>";
+echo "Difference: " . ($num1 - $num2) . "<br>";
+echo "Product: " . ($num1 * $num2) . "<br>";
+echo "Quotient: " . ($num1 / $num2);
+
+/*
+✅ Output:
+Sum: 12
+Difference: 4
+Product: 32
+Quotient: 2
+*/
+?>
